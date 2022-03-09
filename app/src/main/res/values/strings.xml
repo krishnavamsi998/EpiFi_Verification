@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">EpiFi</string>
+    <string name="s_dot">S.</string>
+    <string name="heading">First of the few steps to set you up with a Bank Account</string>
+    <string name="next">next</string>
+    <string name="cancel">I don\'t have pan card</string>
+    <string name="description"><![CDATA[Providing PAN & Date of Birth helps us find and fetch your KYC from a central registry by the Government of India. Learn more]]></string>
+    <string name="pan_number">Pan Number</string>
+    <string name="pan_number_input">Pan Number</string>
+    <string name="month_input">MM</string>
+    <string name="day_input">DD</string>
+    <string name="year_input">Year</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="get_started">Get Started</string>
+    <string name="before_you_start">BEFORE YOU START</string>
+    <string name="sub_heading">Hi, before we start, I want to mention the following points \n\n</string>
+    <string name="intro">
+        1) For the birth date, the input is also assessed if the person is above 18 years of age. So, any date which is not 18 years ago from today are validated as \'Too young!\' and dates which are in future are validated as \'Invalid date\'. All other dates are validated to \'Eligible\'.\n\n
+        2) After click the next button, the instructions mentioned to pop the activity but didn\'t specify weather to close the app or go to parent activity which doesn\'t exist. So, the next button shows the toast and return this activity again\n\n
+        3) Same for the \"I don\'t have a PAN\" button. It will also return you to this activity.\n\n
+        4) It was not mentioned what the \'Learn more\' clickable text should do. So, for the purpose of functionality, it will generate a \'Learning more…\' toast.\n\n
+        5) With that in place, you can start the app by clicking the below Get Started button.\n\n\
+
+    </string>
+    <string name="invalid_date">Invalid Date</string>
+    <string name="too_young">Too young!</string>
+    <string name="eligible">Eligible</string>
+
+</resources>
