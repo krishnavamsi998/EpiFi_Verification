@@ -25,7 +25,7 @@ class IntroActivity : AppCompatActivity() {
         v.setSpan(LeadingMarginSpan.Standard(0,60),0,str.length,0)
         return v
     }
-    private fun getStarted(view: View) {
+    fun getStarted(view: View) {
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
     }

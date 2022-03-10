@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 
 import com.example.epifi.databinding.ActivityMainBinding
+import java.util.regex.Pattern
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,8 +53,9 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        binding.panNumberInput.doOnTextChanged a1@{ text, _, _, _ ->
-            validate(text)
+        binding.panInput.doOnTextChanged a1@{ text, _, _, _ ->
+            Log.d("meow","meow")
+            validatePan(text)
         }
 
         binding.dayInput.doOnTextChanged{ text, _, _, _ ->
@@ -68,20 +70,24 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun validate(text : CharSequence?){
-        b1 = validatePan(text)
+    private fun validatePan(text : CharSequence?){
+
+        //b1 = validatePan(text)
+        b1 = Pattern.matches("[A-Z]{5}[0-9]{4}[A-Z]",text.toString())
+        Log.d("metow",text.toString() + " ${b1}")
         if(!b1){
-            binding.panNumberInput.error = "Invalid Pan Number!"
+
+            binding.panInput.setCompoundDrawables(null,null,null,null)
+            binding.panInput.error = "Invalid Pan Number!"
             binding.next.isEnabled = false
             return
         }
         else{
-            Log.d("meow","meow")
             val icon = getDrawable(R.drawable.ic_baseline_check_circle_24)
             icon?.setBounds(0,0,icon.intrinsicWidth,icon.intrinsicHeight)
-            binding.panNumberInput.error = null
-            binding.panNumberInput.setCompoundDrawables(null,null,null,null)
-            binding.panNumberInput.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_baseline_check_circle_24,0)
+            binding.panInput.error = null
+            binding.panInput.setCompoundDrawables(null,null,null,null)
+            binding.panInput.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_baseline_check_circle_24,0)
         }
         if(b2){
 
@@ -90,30 +96,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.next.isEnabled = false
     }
-    private fun validatePan(text : CharSequence?): Boolean{
-        if(text.toString().length == 10){
-            Log.d("here","it is 10")
-            val str = text.toString()
-            for(i in 0..4){
-                if(!str[i].isUpperCase()){
-                    return false
-                }
-            }
-            for(i in 5..8){
-                if(!str[i].isDigit()){
-                    return false
-                }
-            }
-            if(!str[9].isUpperCase()){
-                return false
-            }
-            return true
-        }
-        return false
-    }
 
 
-        private fun validateDate(text : CharSequence?, value:Int){
+    private fun validateDate(text : CharSequence?, value:Int){
         if(text==null || text.isEmpty()){
             binding.dateInvalidate.text = getString(R.string.invalid_date)
             binding.dateInvalidate.setTextColor(Color.RED)
